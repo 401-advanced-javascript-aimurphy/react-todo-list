@@ -17,11 +17,11 @@ class App extends React.Component{
     const newItem = {
       name: item,
       complete: false,
-      id:
-    }
+      // id:
+    };
     // this.setState({item: newItem});
     // console.log(newItem);
-    this.setState({tasks: [this.state.tasks, newItem]});
+    this.setState({tasks: [...this.state.tasks, newItem]});
   }
 
   deleteTask=(actualID)=>{
