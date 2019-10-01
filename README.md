@@ -1,5 +1,50 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# LAB - 28?
+
+## react todo list
+
+### Author: Ai
+
+### Links and Resources
+* [submission PR](http://xyz.com)
+* [travis](http://xyz.com)
+* [back-end](http://xyz.com) (when applicable)
+* [front-end](http://xyz.com) (when applicable)
+
+#### Documentation
+* [api docs](http://xyz.com) (API servers)
+* [jsdoc](http://xyz.com) (Server assignments)
+* [styleguide](http://xyz.com) (React assignments)
+
+### Modules
+#### `app.js`  `form.js`  `header.js`  `list.js`
+##### Exported Values and Methods
+
+###### `foo(thing) -> string`
+Usage Notes or examples
+
+###### `bar(array) -> array`
+Usage Notes or examples
+
+### Setup
+#### `.env` requirements
+* `PORT` - Port Number
+* `MONGODB_URI` - URL to the running mongo instance/db
+
+#### Running the app
+* `npm start`
+* Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  
+#### Tests
+* `npm test`
+* What assertions were made?
+* What assertions need to be / should be made?
+
+#### UML
+Link to an image of the UML for your application and response to events
+
 ## Available Scripts
 
 In the project directory, you can run:
