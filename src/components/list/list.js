@@ -8,7 +8,7 @@ class List extends React.Component {
       <ul>
         {this.props.tasks.map((item, i) => {
           return <li key={i}>{item.name}
-            <button>Delete</button>
+            <button onClick={this.props.action}>Delete</button>
           </li>
         })}
       </ul>
