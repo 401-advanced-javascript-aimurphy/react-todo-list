@@ -16,6 +16,7 @@ class App extends React.Component{
   addTask=(item)=>{
     const newItem = {
       name: item,
+      id: Math.random(),
       complete: false,
       // id:
     };
@@ -25,7 +26,9 @@ class App extends React.Component{
   }
 
   deleteTask=(actualID)=>{
+    
     let tasklist = this.state.map(item=>item.id!== actualID ? item:{...item, complete:!item.complete});
+    console.log(tasklist, this.state.tasks);
   }
 
   // we are just setting state and updating the master list. 
