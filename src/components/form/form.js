@@ -15,7 +15,7 @@ class Form extends React.Component{
   onSubmit = (e) => {
         e.preventDefault();
         // this.setState({ item: "" });
-        console.log('state item',this.state.item);
+        console.log('state item',this.state);
         this.props.action(this.state.item);
         e.target.reset();
         
@@ -29,7 +29,7 @@ class Form extends React.Component{
         <input name="item" type="text" placeholder="create a new task" defaultValue="" onChange={this.onInput}></input>
 
         <button type="submit"
-          value="Submit">add task</button>
+          value="Submit" >add task</button>
       </form>
     )}
 }
