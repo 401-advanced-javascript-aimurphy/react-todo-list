@@ -14,10 +14,12 @@ class Form extends React.Component{
 
   onSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state.item);
-        e.target.reset();
+        // this.setState({ item: "" });
+        console.log('state item',this.state.item);
         this.props.action(this.state.item);
-        // this.setState({ title: "" });
+        e.target.reset();
+        
+        
   }
 
 

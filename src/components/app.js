@@ -5,29 +5,30 @@ import List from './list/list.js';
 import '../design/App.css';
 
 class App extends React.Component{
-  constructor(props){
-    super(props);
-    this.state={
+  state={
       tasks:[],
-      // item:{},
+      item:{},
     }
-  }
+
    
   addTask=(item)=>{
+    // console.log('form data is,', formData);
+    // let item = formData;
     const newItem = {
       name: item,
       id: Math.random(),
       complete: false,
-      // id:
     };
-    // this.setState({item: newItem});
-    // console.log(newItem);
+
+    this.setState({item: newItem});
+    console.log(newItem);
     this.setState({tasks: [...this.state.tasks, newItem]});
+    console.log('addtsk', this.state.tasks, this.state.item);
   }
 
   deleteTask=(actualID)=>{
-    
-    let tasklist = this.state.map(item=>item.id!== actualID ? item:{...item, complete:!item.complete});
+    console.log('delete task id',actualID);
+    let tasklist = this.state.tasks.map(item=>item.id!== actualID ? item:{...item, complete:!item.complete});
     console.log(tasklist, this.state.tasks);
   }
 
