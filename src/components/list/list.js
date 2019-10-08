@@ -23,10 +23,15 @@ class List extends React.Component {
 deleteTask=(realID)=>{
   // actualID=this.state.tasks;
   console.log('delete task id',realID);
+  console.log(this.props);
   console.log(this.props.tasks);
-  let tasklist = this.props.tasks.filter(item=>item.id !== item.realID);
+
+  let tasklist = this.props.tasks.filter(item => item.id !== item.realID);
+  console.log(tasklist[0].id, 'is task list');
+
+  // must be setstate? 
   this.setState({tasks: tasklist});
-  console.log('tasklist', this.props.tasks);  
+  console.log('list', this.props.tasks);  
   // return tasklist;
 }
 // onSubmit = (e) => {
