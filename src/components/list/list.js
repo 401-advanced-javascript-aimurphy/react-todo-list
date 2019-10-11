@@ -5,16 +5,28 @@ class List extends React.Component {
   constructor(props){
     super(props);
     this.state={
-      item:{}
+      complete:''
     };
   }
   onToggle = (e) => {
     e.preventDefault();
-    console.log('toggle info',e.target.value);
+
+    console.log('toggle info',e.target.id);
+    let toggledID=e.target.id;
+    let toggledItem=this.props.tasks[toggledID].complete;
+    this.setState({complete:toggledItem});
+    console.log(this.state.complete,'complete befoore');
+    this.setState({complete:!this.state.complete});
+    console.log('list otggle item',toggledItem);
+
+    console.log(this.state.complete,'complete in list toggle');
     // this.setState({ [e.target.name]: e.target.value});
 
-    // console.log('delete item',this.state.item);
-    this.props.action(e.target.value);
+    // let completed = this.props.tasks.filter((item) => item.id === toggledID);
+
+    // console.log('completed❓', completed);
+    // this.setState({ item: completed});
+    this.props.action(toggledID);
     // console.log('state in delete',this.state);
     
 }
@@ -52,7 +64,7 @@ deleter=(realID)=>{
     return (
       <ul>
         {this.props.tasks.map((item, i) => {
-          return <li key={i}><p value={item.id} onClick={this.onToggle}>{item.name}</p>   
+          return <li key={i} onClick={this.onToggle} id={i}>{item.name}   
           <Button id={item.id} action={this.deleter}/>
           </li>
         })}

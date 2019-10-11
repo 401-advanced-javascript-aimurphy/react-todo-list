@@ -39,16 +39,21 @@ class App extends React.Component{
 
   }
 
-  toggleComplete=(realID)=>{
+  toggleComplete=(key)=>{
     // actualID=this.state.tasks;
-    console.log('toggle task id',realID);
-    console.log(this.state.tasks);
-    let tasklist = this.state.tasks.filter(item=>item.id!== realID);
-    this.setState({tasks: tasklist});
-    console.log('tasklist', this.state.tasks);  
+    console.log('toggle task id',key);
+    console.log(this.state.tasks[key]);
+    // let tasklist = this.state.tasks.map(item=>item.id === item.realID);
+    let toggledItem=this.state.tasks[key];
+    let notToggle=!this.state.tasks[key].complete;
+    console.log('notoggs',notToggle);
+    // let completed = this.state.tasks.filter(item=>item.id===realID);
+    this.setState({item:toggledItem});
+    console.log('TGI', this.state.item);
+    this.setState({...this.state.item, complete:notToggle});
     // return tasklist;
   }
-  // toggling? {item:[...item, complete:!item.complete}]);
+  // toggling? {item:[...item, complete:!item.complete]});
 
   // we are just setting state and updating the master list. 
   render(){return (
