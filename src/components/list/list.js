@@ -19,20 +19,24 @@ class List extends React.Component {
     
 }
 
-
-deleteTask=(realID)=>{
+deleter=(realID)=>{
   // actualID=this.state.tasks;
   console.log('delete task id',realID);
-  console.log(this.props);
+  console.log(this, 'props');
   console.log(this.props.tasks);
 
-  let tasklist = this.props.tasks.filter(item => item.id !== item.realID);
-  console.log(tasklist[0].id, 'is task list');
+  let tasklist = this.props.tasks.filter(item => item.id !== realID);
+  console.log(tasklist, 'is task list');
+  
+  console.log('before setstate', this.props.tasks);  
+  // must be setstate?
+  this.props.buttons(tasklist);
 
-  // must be setstate? 
-  this.setState({tasks: tasklist});
-  console.log('list', this.props.tasks);  
+  console.log('after setstate', this.props.tasks);  
   // return tasklist;
+
+
+  
 }
 // onSubmit = (e) => {
 //   e.preventDefault();
@@ -48,7 +52,8 @@ deleteTask=(realID)=>{
     return (
       <ul>
         {this.props.tasks.map((item, i) => {
-          return <li key={i}><p value={item.id} onClick={this.onToggle}>{item.name}</p>   <Button id={item.id} action={this.deleteTask}/>
+          return <li key={i}><p value={item.id} onClick={this.onToggle}>{item.name}</p>   
+          <Button id={item.id} action={this.deleter}/>
           </li>
         })}
       </ul>
