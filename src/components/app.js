@@ -4,6 +4,7 @@ import Form from './form/form.js';
 import List from './list/list.js';
 // import Button from './list/button.js';
 import '../design/App.css';
+import Button from './list/button.js';
 
 class App extends React.Component{
   state={
@@ -27,14 +28,15 @@ class App extends React.Component{
     console.log('addtsk', this.state.tasks, this.state.item);
   }
 
-  deleteTask=(realID)=>{
+  deleteTask=(tasklist)=>{
     // actualID=this.state.tasks;
-    console.log('delete task id',realID);
-    console.log(this.state.tasks);
-    let tasklist = this.state.tasks.filter(item=>item.id!== realID);
+    console.log('delete from button',tasklist);
+    // console.log(this.state.tasks);
+    // let tasklist = this.state.tasks.filter(item=>item.id!== realID);
     this.setState({tasks: tasklist});
-    console.log('tasklist', this.state.tasks);  
+    // console.log('tasklist', this.state.tasks);  
     // return tasklist;
+
   }
 
   toggleComplete=(realID)=>{
@@ -53,7 +55,7 @@ class App extends React.Component{
     <div className="App">
       <Header />
       <Form action={this.addTask}/>
-      <List action={this.toggleComplete} tasks={this.state.tasks}>
+      <List action={this.toggleComplete} tasks={this.state.tasks} buttons={this.deleteTask}>
       </List>
     </div>
   );}
