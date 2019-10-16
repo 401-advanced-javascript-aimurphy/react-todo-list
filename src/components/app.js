@@ -4,7 +4,7 @@ import Form from './form/form.js';
 import List from './list/list.js';
 // import Button from './list/button.js';
 import '../design/todo.css';
-import Button from './list/button.js';
+// import Button from './list/button.js';
 
 class App extends React.Component{
   state={
@@ -12,33 +12,24 @@ class App extends React.Component{
       item:{},
       count:''
     }
-
    
-  addTask=(item)=>{
-    console.log('form data is,', item);
-    // let item = formData;
-    const newItem = {
-      name: item,
+  addTask=(newItem)=>{
+    console.log('form data is,', newItem);
+    let add={
+      name: newItem.name,
       id: Math.random().toString(),
-      complete: false,
+      complete: newItem.complete,
     };
 
-    this.setState({item: newItem});
-    console.log(newItem);
-    this.setState({tasks: [...this.state.tasks, newItem]});
-    console.log('addtsk', this.state.tasks, this.state.item);
+    this.setState({tasks: [...this.state.tasks, add]});
   }
 
   deleteTask=(delItem)=>{
     let itemName = delItem.id;
-    // actualID=this.state.tasks;
-    console.log('delete from button',delItem);
-    console.log(this.state.tasks);
+
     let tasklist = this.state.tasks.filter((item) => item.id !== itemName);
-    console.log(tasklist, 'is task list');
+
     this.setState({tasks: tasklist});
-    // console.log('tasklist', this.state.tasks);  
-    // return tasklist;
 
   }
 
@@ -49,17 +40,17 @@ class App extends React.Component{
     console.log('tog id',tog);
 
     let status = this.state.tasks.filter((item) => item.id === tog);
-    console.log(status[0].complete);
+    console.log('filter for toggled',status[0].complete);
     status[0].complete=!status[0].complete;
-    console.log(status);
+    console.log('change to complete?',status);
 
     let tasklist = this.state.tasks.filter((item) => item.id !== tog);
     console.log(tasklist, 'is task list');
-    this.setState({tasks: tasklist});
+    this.setState({tasks: [...this.state.tasks,tasklist]});
 
     // this.setState({item: status[0]});
 
-    this.setState({tasks: [...this.state.tasks, status[0]]});
+    this.addTask(status[0]);
 
 
   }

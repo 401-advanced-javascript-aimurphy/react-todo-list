@@ -3,12 +3,16 @@ class Form extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      item:{}
+        // name: '',
+        // id: Math.random().toString(),
+        // complete: false,
     };
   }
 
   onInput=(e)=>{
     this.setState({ [e.target.name]: e.target.value});
+    // this.setState({id: Math.random().toString()});--was giving same #
+    this.setState({complete: false});
     console.log(this.state);
   }
 
@@ -16,7 +20,7 @@ class Form extends React.Component{
         e.preventDefault();
         // this.setState({ item: "" });
         console.log('state item',this.state);
-        this.props.action(this.state.item);
+        this.props.action(this.state);
         e.target.reset();
         
         
@@ -26,7 +30,7 @@ class Form extends React.Component{
   render(){
     return(
       <form onSubmit={this.onSubmit}>
-        <input name="item" type="text" placeholder="Add To Do List Item"  onChange={this.onInput} required></input>
+        <input name="name" type="text" placeholder="Add To Do List Item"  onChange={this.onInput} required></input>
 
         <button type="submit"
           value="Submit" >add task</button>

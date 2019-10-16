@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from './button.js';
+// import Button from './button.js';
 
 class List extends React.Component {
   constructor(props) {
@@ -28,10 +28,11 @@ class List extends React.Component {
   }
 
   render() {
+    // do not forget className={`complete-${item.complete}`} that was a pain in the butt to figure out.
     return (
       <ul>
         {this.props.tasks.map((item, i) => {
-          return <li key={i} id={i}><p id={item.id} onClick={this.onToggle} >{item.name}</p>
+          return <li className={`complete-${item.complete}`} key={i} id={i}><span id={item.id} onClick={this.onToggle} >{item.name}</span>
             <button name={item.name} onClick={this.deleter} id={item.id}>Delete</button>
           </li>
         })}
