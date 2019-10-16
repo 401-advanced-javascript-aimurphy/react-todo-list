@@ -10,7 +10,7 @@ class App extends React.Component{
   state={
       tasks:[],
       item:{},
-      count:''
+      count:0
     }
    
   addTask=(newItem)=>{
@@ -22,6 +22,8 @@ class App extends React.Component{
     };
 
     this.setState({tasks: [...this.state.tasks, add]});
+
+    this.setState({count:this.state.tasks.length});
   }
 
   deleteTask=(delItem)=>{
@@ -37,20 +39,28 @@ class App extends React.Component{
     console.log('in toggler',toggled);
 
     let tog = toggled.id;
-    console.log('tog id',tog);
+    console.log('tog id',tog);//what id i am dealing with
 
-    let status = this.state.tasks.filter((item) => item.id === tog);
-    console.log('filter for toggled',status[0].complete);
-    status[0].complete=!status[0].complete;
-    console.log('change to complete?',status);
+    // arr with only the toggled item
+    // let status = this.state.tasks.filter((item) => item.id === tog);
+    // console.log('filter for toggled',status[0].complete);
+    // updating complete status of item
+    // status[0].complete=!status[0].complete;
+    // console.log('change to complete?',status);
 
-    let tasklist = this.state.tasks.filter((item) => item.id !== tog);
-    console.log(tasklist, 'is task list');
-    this.setState({tasks: [...this.state.tasks,tasklist]});
+    // arr of tasks to exclude the item we updated
+    // let tasklist = this.state.tasks.filter((item) => item.id !== tog);
+    // console.log(tasklist, 'is task list');
 
-    // this.setState({item: status[0]});
+    // tasklist.push(status[0]);
 
-    this.addTask(status[0]);
+    // map arr if true stay same, if false change status of complete
+    let updated = this.state.tasks.map(item=>item.id!== tog ? item : {...item, complete:!item.complete});
+
+    console.log(updated);
+    // updating the tasks sans toggled
+    this.setState({tasks:updated});
+
 
 
   }
@@ -59,7 +69,7 @@ class App extends React.Component{
   // we are just setting state and updating the master list. 
   render(){return (
     <div className="todo">
-      if(this.state.tasks.length>0){<Header />}
+      <Header />
       
       <Form action={this.addTask}/>
       <List  action={this.toggleComplete} tasks={this.state.tasks} buttons={this.deleteTask}>
