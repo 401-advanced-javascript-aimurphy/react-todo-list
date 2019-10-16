@@ -10,16 +10,7 @@ class Button extends React.Component {
     }
   }
 
-  onSubmit = (e) => {
-    e.preventDefault();
-    console.log(this.state, 'in button');
-    console.log('delete target info',e.target.name,this.props.id);
-    // this.setState({ [e.target.name]: e.target.value});
-  
-    // console.log('delete item',this.state.item);
-    this.props.action(this.props.id);
-    // console.log('state in delete',this.state);
-  }
+ 
 
     
 

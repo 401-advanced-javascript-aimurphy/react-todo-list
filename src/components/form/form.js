@@ -7,8 +7,8 @@ class Form extends React.Component{
     };
   }
 
-  onInput=(element)=>{
-    this.setState({ [element.target.name]: element.target.value});
+  onInput=(e)=>{
+    this.setState({ [e.target.name]: e.target.value});
     console.log(this.state);
   }
 
@@ -26,7 +26,7 @@ class Form extends React.Component{
   render(){
     return(
       <form onSubmit={this.onSubmit}>
-        <input name="item" type="text" placeholder="create a new task" defaultValue="" onChange={this.onInput}></input>
+        <input name="item" type="text" placeholder="Add To Do List Item"  onChange={this.onInput} required></input>
 
         <button type="submit"
           value="Submit" >add task</button>
