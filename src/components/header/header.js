@@ -5,7 +5,7 @@ class Header extends React.Component{
 
   render(){
     return(
-      <header><h1>There are {this.props.count} Items To Complete</h1></header>
+      <header><h2>There are {this.props.count} Items To Complete</h2></header>
     )
   }
 }
