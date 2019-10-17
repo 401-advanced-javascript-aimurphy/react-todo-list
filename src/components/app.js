@@ -23,7 +23,7 @@ class App extends React.Component{
 
     this.setState({tasks: [...this.state.tasks, add]});
 
-    this.setState({count:this.state.tasks.length});
+    this.setState({count:this.state.count + 1});
   }
 
   deleteTask=(delItem)=>{
@@ -32,6 +32,8 @@ class App extends React.Component{
     let tasklist = this.state.tasks.filter((item) => item.id !== itemName);
 
     this.setState({tasks: tasklist});
+
+    this.setState({count:this.state.count - 1});
 
   }
 
@@ -69,7 +71,7 @@ class App extends React.Component{
   // we are just setting state and updating the master list. 
   render(){return (
     <div className="todo">
-      <Header />
+      <Header count={this.state.count}/>
       
       <Form action={this.addTask}/>
       <List  action={this.toggleComplete} tasks={this.state.tasks} buttons={this.deleteTask}>
